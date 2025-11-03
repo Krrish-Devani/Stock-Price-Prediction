@@ -3,7 +3,7 @@ import sys
 from dataclasses import dataclass
 
 from catboost import CatBoostClassifier
-from sklearn.linear_model import LinearRegression
+from sklearn.linear_model import LinearRegression, Ridge, Lasso
 from sklearn.metrics import r2_score
 from sklearn.neighbors import KNeighborsRegressor
 from sklearn.tree import DecisionTreeRegressor
@@ -38,6 +38,10 @@ class ModelTrainer:
             )
 
             models = {
+                "Linear Regression": LinearRegression(),
+                "K-Neighbors Regressor": KNeighborsRegressor(),
+                "Lasso Regression": Lasso(),
+                "Ridge Regression": Ridge(),
                 "Random Forest": RandomForestRegressor(),
                 "Decision Tree": DecisionTreeRegressor(),
                 "Gradient Boosting": GradientBoostingRegressor(),
