@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Performance Prediction</title>
+    <link rel="stylesheet" href="/static/home.css">
+</head>
+<body>
+    <div class="container">
+        <a href="{{ url_for('index') }}" class="back-btn">← Back to Home</a>
+        
+        <div class="header">
+            <h1>📈 Stock Price Prediction</h1>
+            <p>Fill in the details below to predict the stock price</p>
+        </div>
+
+        <form action="{{ url_for('predict_datapoint') }}" method="post">
+            <div class="form-group">
+                <label class="form-label">Open</label>
+                <input class="form-control" type="number" step="any" name="Open" placeholder="Enter Open Price" required />
+            </div>
+
+            <div class="form-group">
+                <label class="form-label">High</label>
+                <input class="form-control" type="number" step="any" name="High" placeholder="Enter High Price" required />
+            </div>
+
+            <div class="form-group">
+                <label class="form-label">Low</label>
+                <input class="form-control" type="number" step="any" name="Low" placeholder="Enter Low Price" required />
+            </div>
+
+            <div class="form-group">
+                <label class="form-label">Volume</label>
+                <input class="form-control" type="number" step="any" name="Volume" placeholder="Enter Volume" required />
+            </div>
+
+            <button class="btn" type="submit"> Predict Stock Price</button>
+        </form>
+
+        {% if results %}
+        <div class="result">
+            🎯 Predicted Stock Price: <strong>{{ "%.1f"|format(results) }}</strong>
+        </div>
+        {% endif %}
+    </div>
+</body>
+</html>
